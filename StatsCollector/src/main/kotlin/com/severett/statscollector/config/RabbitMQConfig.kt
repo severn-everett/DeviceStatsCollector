@@ -6,5 +6,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 @ConfigurationProperties("statscollector.rabbitmq")
 open class RabbitMQConfig(
-    var url: String = "localhost"
+    var url: String = "",
+    var userName: String = "",
+    var password: String = "",
 )

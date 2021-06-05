@@ -1,3 +1,5 @@
 statscollector:
   rabbitmq:
-    url: 127.0.0.1
+    url: tcp://localhost:1883
+    userName: DeviceStatsReader
+    password: DeviceStatsReaderPassword
