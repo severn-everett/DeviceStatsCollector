@@ -1,11 +1,11 @@
-package com.severett.devicestatscollector
+package com.severett.statsmonitor
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-open class Main
+open class StatsMonitor
 
 fun main(args: Array<String>) {
-    SpringApplication.run(Main::class.java, *args)
+    SpringApplication.run(StatsMonitor::class.java, *args)
 }

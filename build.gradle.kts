@@ -11,20 +11,25 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-    implementation("org.springframework.boot:spring-boot-starter")
-}
+subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
 
-tasks {
-    withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {
-        kotlinOptions {
-            jvmTarget = "15"
-            apiVersion = "1.4"
-            languageVersion = "1.4"
+    tasks {
+        withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).configureEach {
+            kotlinOptions {
+                jvmTarget = "15"
+                apiVersion = "1.4"
+                languageVersion = "1.4"
+            }
+        }
+        test {
+            useJUnitPlatform()
         }
     }
-    test {
-        useJUnitPlatform()
+
+    dependencies {
+        implementation(kotlin("stdlib-jdk8"))
     }
 }
