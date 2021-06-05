@@ -30,6 +30,7 @@ subprojects {
     }
 
     dependencies {
+        implementation("io.github.microutils:kotlin-logging-jvm:2.0.8")
         implementation(kotlin("stdlib-jdk8"))
     }
 }
