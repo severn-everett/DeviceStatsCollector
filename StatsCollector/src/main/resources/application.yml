@@ -3,3 +3,4 @@ statscollector:
     url: tcp://localhost:1883
     userName: DeviceStatsReader
     password: DeviceStatsReaderPassword
+    topic: Device_Status

@@ -9,4 +9,5 @@ open class RabbitMQConfig(
     var url: String = "",
     var userName: String = "",
     var password: String = "",
+    var topic: String = ""
 )

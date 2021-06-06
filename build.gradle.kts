@@ -13,8 +13,8 @@ repositories {
 }
 
 subprojects {
-    apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
+    apply(plugin = "kotlin")
+    apply(plugin = "kotlinx-serialization")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
 
