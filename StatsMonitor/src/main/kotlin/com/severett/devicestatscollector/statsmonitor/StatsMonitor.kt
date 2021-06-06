@@ -1,4 +1,4 @@
-package com.severett.statsmonitor
+package com.severett.devicestatscollector.statsmonitor
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication

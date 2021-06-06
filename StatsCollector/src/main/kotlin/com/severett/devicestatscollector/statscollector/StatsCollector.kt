@@ -1,6 +1,6 @@
-package com.severett.statscollector
+package com.severett.devicestatscollector.statscollector
 
-import com.severett.statscollector.config.RabbitMQConfig
+import com.severett.devicestatscollector.statscollector.config.RabbitMQConfig
 import mu.KotlinLogging
 import org.eclipse.paho.client.mqttv3.MqttClient
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions

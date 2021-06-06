@@ -1,4 +1,4 @@
-package com.severett.statscollector.config
+package com.severett.devicestatscollector.statscollector.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
