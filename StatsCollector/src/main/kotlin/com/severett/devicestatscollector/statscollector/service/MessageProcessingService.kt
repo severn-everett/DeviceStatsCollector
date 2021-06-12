@@ -1,6 +1,6 @@
 package com.severett.devicestatscollector.statscollector.service
 
-import com.severett.devicestatscollector.common.model.SystemReport
+import com.severett.devicestatscollector.common.model.ReportMessage
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import mu.KotlinLogging
@@ -26,7 +26,7 @@ class MessageProcessingService : IMqttMessageListener {
         }
     }
 
-    private fun deserializeReport(payload: ByteArray): SystemReport {
+    private fun deserializeReport(payload: ByteArray): ReportMessage {
         val sizePrepend = payload.sliceArray(0 until SIZE_PREPEND_END)
         val compressedPayload = payload.sliceArray(SIZE_PREPEND_END until payload.size)
         val uncompressedSize = ByteBuffer.wrap(sizePrepend)
