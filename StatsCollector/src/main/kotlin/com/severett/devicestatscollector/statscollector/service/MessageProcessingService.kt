@@ -17,6 +17,7 @@ class MessageProcessingService : IMqttMessageListener {
     private val decompressor = LZ4Factory.fastestJavaInstance().fastDecompressor()
 
     override fun messageArrived(topic: String, message: MqttMessage) {
+        // TODO Enable logging during testing.
         logger.debug { "Received message ${message.id} of length ${message.payload.size}" }
         if (message.payload.size >= SIZE_PREPEND_END) {
             val systemReport = deserializeReport(message.payload)
@@ -32,11 +33,16 @@ class MessageProcessingService : IMqttMessageListener {
         val uncompressedSize = ByteBuffer.wrap(sizePrepend)
             .order(ByteOrder.LITTLE_ENDIAN)
             .int
-        val decompressedPayload = decompressor.decompress(compressedPayload, uncompressedSize)
-        return Json.decodeFromString(decompressedPayload.toString(Charsets.UTF_8))
+        return if (uncompressedSize <= MAX_MESSAGE_SIZE) {
+            val decompressedPayload = decompressor.decompress(compressedPayload, uncompressedSize)
+            Json.decodeFromString(decompressedPayload.toString(Charsets.UTF_8))
+        } else {
+            throw IllegalArgumentException("Uncompressed payload size $uncompressedSize exceeds limit of $MAX_MESSAGE_SIZE")
+        }
     }
 
     private companion object {
         private const val SIZE_PREPEND_END = 4
+        private const val MAX_MESSAGE_SIZE = 5_000
     }
 }
